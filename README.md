@@ -1,8 +1,8 @@
 # Identificação
 
-* Nome: 
-* Email (@ccc): 
-* Matrícula: 
+* Nome: Alex Fernandes da Silva
+* Email (@ccc): alex.fernandes.silva@ccc.ufcg.edu.br
+* Matrícula: 123110373
 
 # Roteiro: Fila de Prioridade
 

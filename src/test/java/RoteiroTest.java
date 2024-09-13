@@ -1,8 +1,55 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import java.util.Arrays;
 
 public class RoteiroTest {
+	
+    @Test
+	public void testInsereFinal() {
+		FilaPrioridade insereFinal = new InsereFinalFilaPrioridade(5);
+		insereFinal.add("a", 1);
+		insereFinal.add("b", 2);
+		assertEquals(insereFinal.removeNext(), "b");
+		assertEquals(insereFinal.removeNext(), "a");
+		
+		insereFinal = new InsereFinalFilaPrioridade(5);
+		insereFinal.add("b", 2);
+		insereFinal.add("a", 1);
+		
+		assertEquals(insereFinal.removeNext(), "b");
+		assertEquals(insereFinal.removeNext(), "a");
+    }
+    
+    @Test
+	public void testInsereOrdenado() {
+    	FilaPrioridade insertion = new InsereOrdenadoFilaPrioridade(5);
+    	insertion.add("a", 1);
+    	insertion.add("b", 2);
+		assertEquals(insertion.removeNext(), "b");
+		assertEquals(insertion.removeNext(), "a");
+		
+		insertion = new InsereOrdenadoFilaPrioridade(5);
+    	insertion.add("b", 2);
+    	insertion.add("a", 1);
+
+		assertEquals(insertion.removeNext(), "b");
+		assertEquals(insertion.removeNext(), "a");
+    }
+    
+    @Test
+	public void testHeap() {
+    	FilaPrioridade heap = new HeapFilaPrioridade(5);
+    	heap.add("a", 1);
+    	heap.add("b", 2);
+		assertEquals(heap.removeNext(), "b");
+		assertEquals(heap.removeNext(), "a");
+		
+		heap = new InsereOrdenadoFilaPrioridade(5);
+		heap.add("b", 2);
+		heap.add("a", 1);
+
+		assertEquals(heap.removeNext(), "b");
+		assertEquals(heap.removeNext(), "a");
+    }
     
     @Test
 	public void test() {
@@ -13,7 +60,6 @@ public class RoteiroTest {
 		estrategias[0] = heap;
 		estrategias[1] = insereFinal;
 		estrategias[2] = insertion;
-
 
 		// 1, 2, 3, 4, 5
 		for (FilaPrioridade fila : estrategias) {
@@ -102,7 +148,5 @@ public class RoteiroTest {
 		for (FilaPrioridade fila : estrategias) {
 			assertEquals(fila.removeNext(), "e");
 		}
-
 	}
-
 }
